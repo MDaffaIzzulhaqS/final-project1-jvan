@@ -28,9 +28,6 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.about:
                     replaceFragment(new AboutFragment());
                     break;
-                case R.id.settings:
-                    replaceFragment(new SettingsFragment());
-                    break;
                 case R.id.exit:
                     System.exit(0);
                     break;

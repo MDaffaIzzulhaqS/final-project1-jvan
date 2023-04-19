@@ -2,6 +2,7 @@
     <string name="app_name">ToDoList_App</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_home_fragment">Tampilan Halaman Home</string>
-    <string name="hello_about_fragment">Tampilan Halaman About</string>
-    <string name="hello_settings_fragment">Tampilan Halaman Settings</string>
+    <string name="hello_about_fragment">About Us</string>
+    <string name="hello_settings_fragment">Settings</string>
+    <string name="darkMode">Dark Mode</string>
 </resources>

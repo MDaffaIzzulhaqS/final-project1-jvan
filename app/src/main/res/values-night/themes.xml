@@ -19,6 +19,14 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="Theme.ToDoList_App.ActionBar" >
+        <item name="windowActionBar">true</item>
+        <item name="windowNoTitle">false</item>
+        <item name="colorPrimary">@color/blue</item>
+        <item name="colorPrimaryVariant">@color/blue</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+    </style>
+
     <style name="Theme.ToDoList_App.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
     <style name="Theme.ToDoList_App.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
