@@ -21,16 +21,13 @@ public class MainActivity extends AppCompatActivity {
         replaceFragment(new HomeFragment());
 
         binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()){
-                case R.id.home:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.about:
-                    replaceFragment(new AboutFragment());
-                    break;
-                case R.id.exit:
-                    System.exit(0);
-                    break;
+            int itemId = item.getItemId();
+            if (itemId == R.id.home) {
+                replaceFragment(new HomeFragment());
+            } else if (itemId == R.id.about) {
+                replaceFragment(new AboutFragment());
+            } else if (itemId == R.id.exit) {
+                System.exit(0);
             }
             return true;
         });
