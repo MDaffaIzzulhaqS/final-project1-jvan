@@ -1,5 +1,7 @@
 package com.finalprojectkelompok6.todolist_app.Adapter;
 
+import android.content.Context;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +12,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.finalprojectkelompok6.todolist_app.AddNewTask;
 import com.finalprojectkelompok6.todolist_app.MainActivity;
 import com.finalprojectkelompok6.todolist_app.Model.ToDoModel;
 import com.finalprojectkelompok6.todolist_app.R;
@@ -35,6 +38,29 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
         firestore = FirebaseFirestore.getInstance();
 
         return new MyViewHolder(view);
+    }
+
+    public void deleteTask(int position){
+        ToDoModel toDoModel = todoList.get(position);
+        firestore.collection("task").document(toDoModel.TaskId).delete();
+        todoList.remove(position);
+        notifyItemRemoved(position);
+    }
+
+    public Context getContext(){
+        return activity;
+    }
+    public void editTask(int position){
+        ToDoModel toDoModel = todoList.get(position);
+
+        Bundle bundle = new Bundle();
+        bundle.putString("task" , toDoModel.getTask());
+        bundle.putString("due" , toDoModel.getDue());
+        bundle.putString("id" , toDoModel.TaskId);
+
+        AddNewTask addNewTask = new AddNewTask();
+        addNewTask.setArguments(bundle);
+        addNewTask.show(activity.getSupportFragmentManager() , addNewTask.getTag());
     }
 
     @Override
