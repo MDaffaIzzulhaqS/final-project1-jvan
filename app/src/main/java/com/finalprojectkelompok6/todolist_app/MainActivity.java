@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 
 import com.finalprojectkelompok6.todolist_app.Adapter.ToDoAdapter;
 import com.finalprojectkelompok6.todolist_app.Model.ToDoModel;
@@ -27,6 +29,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnDialogCloseListner{
 
+    private Button btnAbout;
     private RecyclerView recyclerView;
     private FloatingActionButton mFab;
     private FirebaseFirestore firestore;
@@ -42,7 +45,17 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
 
         recyclerView = findViewById(R.id.recycler_view);
         mFab = findViewById(R.id.floating_action_button);
+        btnAbout = findViewById(R.id.btn_about);
         firestore = FirebaseFirestore.getInstance();
+
+        btnAbout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(), About.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
