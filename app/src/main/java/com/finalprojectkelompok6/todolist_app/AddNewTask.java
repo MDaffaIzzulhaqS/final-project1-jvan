@@ -45,7 +45,6 @@ public class AddNewTask extends BottomSheetDialogFragment {
     private TextView setDueDate;
     private EditText mTaskEdit;
     private Button mSaveBtn;
-    private ImageButton mMicBtn;
     private FirebaseFirestore firestore;
     private Context context;
     private String dueDate = "";
@@ -71,17 +70,6 @@ public class AddNewTask extends BottomSheetDialogFragment {
         setDueDate = view.findViewById(R.id.set_due_tv);
         mTaskEdit = view.findViewById(R.id.task_edittext);
         mSaveBtn = view.findViewById(R.id.save_btn);
-        mMicBtn = view.findViewById(R.id.mic_btn);
-
-        mMicBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH);
-                intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL, RecognizerIntent.LANGUAGE_MODEL_FREE_FORM);
-                intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "Ucapkan Task Anda Disini");
-                startActivityForResult(intent, RECOGNIZER_CODE);
-            }
-        });
 
         firestore = FirebaseFirestore.getInstance();
 
