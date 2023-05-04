@@ -20,7 +20,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.List;
 
-public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
+public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder> {
 
     private List<ToDoModel> todoList;
     private MainActivity activity;
@@ -34,7 +34,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(activity).inflate(R.layout.task , parent , false);
+        View view = LayoutInflater.from(activity).inflate(R.layout.task, parent,false);
         firestore = FirebaseFirestore.getInstance();
 
         return new MyViewHolder(view);
@@ -46,7 +46,6 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
         todoList.remove(position);
         notifyItemRemoved(position);
     }
-
     public Context getContext(){
         return activity;
     }
@@ -62,12 +61,14 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
         addNewTask.setArguments(bundle);
         addNewTask.show(activity.getSupportFragmentManager() , addNewTask.getTag());
     }
-
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+
         ToDoModel toDoModel = todoList.get(position);
         holder.mCheckBox.setText(toDoModel.getTask());
+
         holder.mDueDateTv.setText("Due On " + toDoModel.getDue());
+
         holder.mCheckBox.setChecked(toBoolean(toDoModel.getStatus()));
 
         holder.mCheckBox.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -80,6 +81,7 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
                 }
             }
         });
+
     }
 
     private boolean toBoolean(int status){
@@ -95,11 +97,13 @@ public class ToDoAdapter extends RecyclerView.Adapter<ToDoAdapter.MyViewHolder>{
 
         TextView mDueDateTv;
         CheckBox mCheckBox;
+
         public MyViewHolder(@NonNull View itemView) {
             super(itemView);
 
             mDueDateTv = itemView.findViewById(R.id.due_date_tv);
             mCheckBox = itemView.findViewById(R.id.mcheckbox);
+
         }
     }
 }

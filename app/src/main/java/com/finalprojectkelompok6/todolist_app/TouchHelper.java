@@ -14,6 +14,7 @@ import com.finalprojectkelompok6.todolist_app.Adapter.ToDoAdapter;
 
 import it.xabaras.android.recyclerview.swipedecorator.RecyclerViewSwipeDecorator;
 
+
 public class TouchHelper extends ItemTouchHelper.SimpleCallback {
     private ToDoAdapter adapter;
 
@@ -59,7 +60,7 @@ public class TouchHelper extends ItemTouchHelper.SimpleCallback {
                 .addSwipeRightActionIcon(R.drawable.ic_baseline_delete_24)
                 .addSwipeRightBackgroundColor(Color.RED)
                 .addSwipeLeftActionIcon(R.drawable.ic_baseline_edit_24)
-                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.blue))
+                .addSwipeLeftBackgroundColor(ContextCompat.getColor(adapter.getContext() , R.color.orange))
                 .create()
                 .decorate();
         super.onChildDraw(c, recyclerView, viewHolder, dX, dY, actionState, isCurrentlyActive);

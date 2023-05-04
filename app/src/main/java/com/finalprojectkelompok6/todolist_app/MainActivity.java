@@ -29,9 +29,9 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements OnDialogCloseListner{
 
-    private Button btnAbout;
     private RecyclerView recyclerView;
     private FloatingActionButton mFab;
+    private Button btnAbout;
     private FirebaseFirestore firestore;
     private ToDoAdapter adapter;
     private List<ToDoModel> mList;
@@ -48,17 +48,16 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         btnAbout = findViewById(R.id.btn_about);
         firestore = FirebaseFirestore.getInstance();
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
+
         btnAbout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(getApplicationContext(), About.class);
-                startActivity(intent);
+                startActivity(new Intent(getApplicationContext(), About.class));
                 finish();
             }
         });
-
-        recyclerView.setHasFixedSize(true);
-        recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
 
         mFab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -74,16 +73,15 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
         itemTouchHelper.attachToRecyclerView(recyclerView);
         showData();
         recyclerView.setAdapter(adapter);
-        showData();
     }
-
     private void showData(){
         query = firestore.collection("task").orderBy("time" , Query.Direction.DESCENDING);
+
         listenerRegistration = query.addSnapshotListener(new EventListener<QuerySnapshot>() {
             @Override
             public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
                 for (DocumentChange documentChange : value.getDocumentChanges()){
-                    if(documentChange.getType() == DocumentChange.Type.ADDED){
+                    if (documentChange.getType() == DocumentChange.Type.ADDED){
                         String id = documentChange.getDocument().getId();
                         ToDoModel toDoModel = documentChange.getDocument().toObject(ToDoModel.class).withId(id);
                         mList.add(toDoModel);
@@ -91,7 +89,6 @@ public class MainActivity extends AppCompatActivity implements OnDialogCloseList
                     }
                 }
                 listenerRegistration.remove();
-
             }
         });
     }

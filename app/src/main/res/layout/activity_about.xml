@@ -23,10 +23,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="315dp"
-        android:layout_height="260dp"
-        android:src="@drawable/icon_notif"
-        android:backgroundTint="@color/dark_grey"
+        android:layout_width="339dp"
+        android:layout_height="284dp"
+        android:background="@color/dark_grey"
+        android:src="@drawable/icon_todolist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

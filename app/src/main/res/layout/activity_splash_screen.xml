@@ -20,13 +20,11 @@
 
     <ImageView
         android:id="@+id/iconSplash"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"
-        android:backgroundTint="#FFFFFF"
-        android:scaleType="centerCrop"
-        android:src="@drawable/icon_notif"/>
+        android:layout_width="275dp"
+        android:layout_height="274dp"
+        android:layout_centerInParent="true"
+        android:background="@color/dark_grey"
+        android:src="@drawable/icon_todolist" />
 
     <TextView
         android:layout_width="wrap_content"
