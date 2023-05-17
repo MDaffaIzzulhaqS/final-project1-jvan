@@ -2,6 +2,8 @@
 
 Final Project 1 Kelompok 6 JVAN Hacktiv8 SIB Batch 4
 
+To Do List Mobile Application
+
 Anggota Kelompok :
 1. Muhammad Daffa Izzulhaq Suyanto (JVAN-KS07-001)
 2. Fanisyah Salsabila Octavianti (JVAN-KS07-014)
